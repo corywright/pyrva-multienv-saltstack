@@ -1,0 +1,1 @@
+# global gpg encrypted pillar secrets

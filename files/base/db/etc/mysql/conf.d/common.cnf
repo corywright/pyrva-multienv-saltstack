@@ -1,0 +1,17 @@
+[mysqld]
+bind-address = 0.0.0.0
+
+max_connections = 5000
+query_cache_size = 32M
+query_cache_limit = 1M
+
+{% if grains.get('virtual','') == 'physical' -%}
+innodb_buffer_pool_size = 4G
+innodb_buffer_pool_instances = 2
+{%- endif %}
+
+log_slow_queries = /var/log/mysql/mysql-slow.log
+long_query_time = 2
+
+# log failed auth attempts
+log_warnings = 2
